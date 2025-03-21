@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scan Results - MobSF App Scanner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/results.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Scan Results</h1>
+        <p>Powered by MobSF</p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="results-nav">
+        <a href="/" class="back-link">← Back to Scanner</a>
+    </div>
+
+    <div class="loading-container" id="loadingContainer">
+        <div class="spinner"></div>
+        <p>Loading scan results...</p>
+    </div>
+
+    <div class="results-container" id="resultsContainer" style="display: none;">
+        <div class="summary-section">
+            <h2>Security Summary</h2>
+            <div class="security-score">
+                <div class="score-circle" id="scoreCircle">
+                    <span id="securityScore">0</span>
+                </div>
+                <div class="score-label">Security Score</div>
+            </div>
+
+            <div class="risk-summary">
+                <div class="risk-item high">
+                    <div class="risk-count" id="highCount">0</div>
+                    <div class="risk-label">High Risk</div>
+                </div>
+                <div class="risk-item medium">
+                    <div class="risk-count" id="mediumCount">0</div>
+                    <div class="risk-label">Medium Risk</div>
+                </div>
+                <div class="risk-item low">
+                    <div class="risk-count" id="lowCount">0</div>
+                    <div class="risk-label">Low Risk</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-info-section">
+            <h2>App Information</h2>
+            <div class="app-info-grid" id="appInfoGrid">
+                <!-- App info will be inserted here -->
+            </div>
+        </div>
+
+        <div class="vulnerabilities-section">
+            <h2>Vulnerabilities</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="high">High Risk</button>
+                <button class="tab-btn" data-tab="medium">Medium Risk</button>
+                <button class="tab-btn" data-tab="low">Low Risk</button>
+            </div>
+
+            <div class="tab-content active" id="highTab">
+                <div class="vulnerability-list" id="highVulnerabilities">
+                    <!-- High vulnerabilities will be inserted here -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="mediumTab">
+                <div class="vulnerability-list" id="mediumVulnerabilities">
+                    <!-- Medium vulnerabilities will be inserted here -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="lowTab">
+                <div class="vulnerability-list" id="lowVulnerabilities">
+                    <!-- Low vulnerabilities will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 MobSF App Scanner</p>
+    </div>
+</footer>
+
+<script th:inline="javascript">
+    const appHash = [[${hash}]];
+    const appType = [[${type}]];
+</script>
+<script src="/js/results.js"></script>
+</body>
+</html>
